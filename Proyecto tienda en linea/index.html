@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title data-i18n="meta.title">SportLoryu's - Chaquetas y prendas deportivas urbanas</title>
+    <meta name="description" content="Descubre nuestra colección de chaquetas y prendas deportivas que fusionan innovación, calidad y estilo urbano.">
+    <meta name="theme-color" content="#14213d">
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/language-selector.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="flex justify-between items-center">
+                <div class="logo">
+                    <span class="logo-text" data-i18n="header.logo">SportLoryu's</span>
+                </div>
+
+                <nav class="main-nav hidden-mobile">
+                    <ul class="flex gap-2">
+                        <li><a href="index.html" class="active" data-i18n="nav.home">Inicio</a></li>
+                        <!-- Colecciones section removed as requested -->
+                        <li class="has-submenu" data-no-submenu="true">
+                            <a href="#productos" data-i18n="nav.categories">Categorías</a>
+                            <ul class="submenu">
+                                <li><a href="#" data-i18n="categories.women">Mujer</a></li>
+                                <li><a href="#" data-i18n="categories.men">Hombre</a></li>
+                                <li><a href="#" data-i18n="categories.unisex">Unisex</a></li>
+                                <li><a href="#" data-i18n="categories.limited">Edición limitada</a></li>
+                                <li><a href="#" data-i18n="categories.outlet">Outlet</a></li>
+                            </ul>
+                        </li>
+                        <!-- Ofertas section removed as requested -->
+                        <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions flex items-center gap-1">
+                    <a href="#" class="header-icon" title="Search" data-i18n="[title]header.search">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <a href="#" class="header-icon" title="Account" data-i18n="[title]header.account">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <a href="#" class="header-icon" title="Wishlist" data-i18n="[title]header.wishlist">
+                        <i class="fas fa-heart"></i>
+                    </a>
+                    <a href="#" class="header-icon" title="Cart" data-i18n="[title]header.cart">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                    <div id="language-selector" class="language-selector">
+                        <button class="current-lang" aria-expanded="false" aria-haspopup="true">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAeElEQVR4nO3VwQ3AIAxDUd86FWIGhu0Amcy9IhawUv6TcifBAQkAgD9wPe5UooHiBkyEdulImCWu/FTNM1r5yZqPrHqUTukDmQYqP1VfHaG5Xncq0cDiBkyEdulIzOuX2EPuVDqlD2QaGPmpmgiN/GR97RIDAKCGPreWChBwWzVLAAAAAElFTkSuQmCC" alt="Español" class="lang-flag">
+                            <span>ES</span>
+                        </button>
+                        <div id="language-dropdown" class="lang-dropdown" hidden>
+                            <button class="lang-option" data-lang="es" aria-checked="true">
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAeElEQVR4nO3VwQ3AIAxDUd86FWIGhu0Amcy9IhawUv6TcifBAQkAgD9wPe5UooHiBkyEdulImCWu/FTNM1r5yZqPrHqUTukDmQYqP1VfHaG5Xncq0cDiBkyEdulIzOuX2EPuVDqlD2QaGPmpmgiN/GR97RIDAKCGPreWChBwWzVLAAAAAElFTkSuQmCC" alt="Español" class="lang-flag">
+                                <span>Español</span>
+                            </button>
+                            <button class="lang-option" data-lang="en" aria-checked="false">
+                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB9UlEQVR4nO2Yz0oDQRTFf5OZJk1p1Vq0iFhQ0I0bN/4BQfAvuBPc+QNc+QNc+QNc+QNcuRMEQfAHuBBcCC5E0JXJZJIXJzNt0s5M0iQu5IGQvHnz3r3vnTczL4QQQvw3BqgC+8A5cAe8ABkwBd6BZ+AGOAW2gGJegQpQB46AKfAJvAHPwBPwCHSABnAAbALlPAMV4ABoA4/AA9ADesA9cAecAYdALe9ABdgFToA20AYGwBAYAkPgHugDp8A2UM47UAY2gBpwBPSAGTAFZsAEGAFjYAzcAlfAHlDKO1AESsA6sAWsAQVgDnwAY2AI9IEB8Aq8Aq/AJ1DIO1AAVoAqsA5UgDJQBFLgHbgFGsA+UAf2gB1gE1gFQp6BAKwAm8A2sAvsAXVgC1gFikACJEAJcOArkHfAAavABlADDoEj4BCoA2vAMrCUZ8ABl8A10AY6QAe4BbrADVADjoFjYBfYAtb5H9ZgFbgAroAO0AUegB7QA+6BO+AMOAeugJu8Aw5YB7aBPeAAOAROgDPgHLgELoEr4Ab4Dz4jfzUf6qA2AAAAAElFTkSuQmCC" alt="English" class="lang-flag">
+                                <span>English</span>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="menu-toggle hidden-desktop">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menú móvil -->
+    <div class="mobile-menu">
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active" data-i18n="nav.home">Inicio</a></li>
+                <li class="has-submenu">
+                    <a href="#productos" data-i18n="nav.categories">Categorías</a>
+                    <ul class="submenu">
+                        <li><a href="#" data-i18n="categories.women">Mujer</a></li>
+                        <li><a href="#" data-i18n="categories.men">Hombre</a></li>
+                        <li><a href="#" data-i18n="categories.unisex">Unisex</a></li>
+                        <li><a href="#" data-i18n="categories.limited">Edición limitada</a></li>
+                        <li><a href="#" data-i18n="categories.outlet">Outlet</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
+            </ul>
+            <!-- Selector de idioma para móvil -->
+            <div class="language-selector mobile-language">
+                <button class="current-lang" aria-expanded="false" aria-haspopup="true">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAeElEQVR4nO3VwQ3AIAxDUd86FWIGhu0Amcy9IhawUv6TcifBAQkAgD9wPe5UooHiBkyEdulImCWu/FTNM1r5yZqPrHqUTukDmQYqP1VfHaG5Xncq0cDiBkyEdulIzOuX2EPuVDqlD2QaGPmpmgiN/GR97RIDAKCGPreWChBwWzVLAAAAAElFTkSuQmCC" alt="Español" class="lang-flag">
+                    <span>ES</span>
+                </button>
+                <div class="lang-dropdown" hidden>
+                    <button class="lang-option" data-lang="es" aria-checked="true">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAeElEQVR4nO3VwQ3AIAxDUd86FWIGhu0Amcy9IhawUv6TcifBAQkAgD9wPe5UooHiBkyEdulImCWu/FTNM1r5yZqPrHqUTukDmQYqP1VfHaG5Xncq0cDiBkyEdulIzOuX2EPuVDqlD2QaGPmpmgiN/GR97RIDAKCGPreWChBwWzVLAAAAAElFTkSuQmCC" alt="Español" class="lang-flag">
+                        <span>Español</span>
+                    </button>
+                    <button class="lang-option" data-lang="en" aria-checked="false">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB9UlEQVR4nO2Yz0oDQRTFf5OZJk1p1Vq0iFhQ0I0bN/4BQfAvuBPc+QNc+QNc+QNc+QNcuRMEQfAHuBBcCC5E0JXJZJIXJzNt0s5M0iQu5IGQvHnz3r3vnTczL4QQQvw3BqgC+8A5cAe8ABkwBd6BZ+AGOAW2gGJegQpQB46AKfAJvAHPwBPwCHSABnAAbALlPAMV4ABoA4/AA9ADesA9cAecAYdALe9ABdgFToA20AYGwBAYAkPgHugDp8A2UM47UAY2gBpwBPSAGTAFZsAEGAFjYAzcAlfAHlDKO1AESsA6sAWsAQVgDnwAY2AI9IEB8Aq8Aq/AJ1DIO1AAVoAqsA5UgDJQBFLgHbgFGsA+UAf2gB1gE1gFQp6BAKwAm8A2sAvsAXVgC1gFikACJEAJcOArkHfAAavABlADDoEj4BCoA2vAMrCUZ8ABl8A10AY6QAe4BbrADVADjoFjYBfYAtb5H9ZgFbgAroAO0AUegB7QA+6BO+AMOAeugJu8Aw5YB7aBPeAAOAROgDPgHLgELoEr4Ab4Dz4jfzUf6qA2AAAAAElFTkSuQmCC" alt="English" class="lang-flag">
+                        <span>English</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Banner de descuento -->
+    <div class="discount-banner">
+        <div class="container">
+            <p data-i18n="discount">🔥 <strong>20% DESCUENTO</strong> en chaquetas de cuero hasta fin de mes | <strong>Envío gratis</strong> en compras mayores a 100.000 COP | <strong>Garantía de 2 años</strong> en todos nuestros productos | <strong>Soporte 24/7</strong> para clientes premium 🔥</p>
+        </div>
+    </div>
+
+    <!-- Hero Section Mejorada -->
+    <section class="hero-main">
+        <div class="hero-content">
+            <div class="hero-text fade-in">
+                <h1 data-i18n="hero.title">Descubre la Elegancia en Cada Chaqueta</h1>
+                <p data-i18n="hero.description">Descubre nuestra colección premium de chaquetas con los mejores materiales, diseños únicos y cortes perfectos para cualquier ocasión.</p>
+                <div class="hero-buttons">
+                    <a href="#productos" class="btn btn-primary" data-i18n="hero.cta">Ver Colección</a>
+                    <span class="btn btn-outline" data-i18n="hero.secondary">Ofertas especiales</span>
+                </div>
+            </div>
+            <div class="hero-image fade-in" style="display: flex; justify-content: center; align-items: center;">
+                <img src="assets/images/products/Principal.jpg" alt="SportLoryu's Hero Image" loading="lazy" style="max-width: 100%; height: auto; object-fit: contain;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Categorías destacadas -->
+    <section class="categories-section" id="categorias">
+        <div class="container">
+            <h2 class="section-title" data-i18n="categories.featured">Estilos destacados</h2>
+            <div class="categories-grid">
+                <a href="#" class="category-card">
+                    <div class="category-icon"><i class="fas fa-cloud-rain"></i></div>
+                    <h3 data-i18n="categories.waterproof">Impermeable</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon"><i class="fas fa-running"></i></div>
+                    <h3 data-i18n="categories.sport">Deportiva</h3>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-icon"><i class="fas fa-tshirt"></i></div>
+                    <h3 data-i18n="categories.bicolor">Bicolor</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos destacados -->
+    <section class="products-section" id="productos">
+        <div class="container">
+            <h2 class="section-title" data-i18n="products.featured">Productos destacados</h2>
+            <div class="product-filter">
+                <button class="filter-btn active" data-filter="all" data-i18n="filters.all">Todas</button>
+                <button class="filter-btn" data-filter="impermeable" data-i18n="filters.waterproof">Impermeable</button>
+                <button class="filter-btn" data-filter="cuero" data-i18n="filters.leather">Cuero</button>
+                <button class="filter-btn" data-filter="invierno" data-i18n="filters.winter">Invierno</button>
+            </div>
+            <div class="products-grid">
+                <!-- Producto 1: Chaqueta Impermeable -->
+                <div class="product-card" data-category="impermeable">
+                    <div class="product-badge" data-i18n="product.featured">Destacado</div>
+                    <div class="product-image-container">
+                        <img src="assets/images/products/1.png" alt="Chaqueta Impermeable AquaGuard" class="product-image" loading="lazy">
+                        <div class="product-actions">
+                            <button class="action-btn" data-i18n="[title]product.wishlist"><i class="fas fa-heart"></i></button>
+                            <button class="action-btn" data-i18n="[title]product.cart"><i class="fas fa-shopping-cart"></i></button>
+                            <button class="action-btn" data-i18n="[title]product.view"><i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title" data-i18n="product.aquaguard.name">Chaqueta Impermeable AquaGuard</h3>
+                        <p class="product-category" data-i18n="categories.waterproof">Impermeable</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(32)</span>
+                        </div>
+                        <p class="product-price">
+                            <span data-i18n="product.price" data-i18n-options='{"price": "400.000"}'>COP 400.000</span>
+                        </p>
+                        <a href="pages/products/chaqueta-impermeable-aquaguard.html" class="btn btn-primary" data-i18n="products.viewDetails">Ver detalles</a>
+                    </div>
+                </div>
+
+                <!-- Producto 2: Chaqueta Deportiva -->
+                <div class="product-card" data-category="deportiva">
+                    <div class="product-badge" data-i18n="product.new">Nuevo</div>
+                    <div class="product-image-container">
+                        <img src="assets/images/products/2.png" alt="Chaqueta Deportiva FlexFit" class="product-image" loading="lazy">
+                        <div class="product-actions">
+                            <button class="action-btn" data-i18n="[title]product.wishlist"><i class="fas fa-heart"></i></button>
+                            <button class="action-btn" data-i18n="[title]product.cart"><i class="fas fa-shopping-cart"></i></button>
+                            <button class="action-btn" data-i18n="[title]product.view"><i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title" data-i18n="product.flexfit.name">Chaqueta Deportiva FlexFit</h3>
+                        <p class="product-category" data-i18n="categories.sport">Deportiva</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(45)</span>
+                        </div>
+                        <p class="product-price">
+                            <span data-i18n="product.price" data-i18n-options='{"price": "300.000"}'>COP 300.000</span>
+                        </p>
+                        <a href="pages/products/chaqueta-deportiva-flexfit.html" class="btn btn-primary" data-i18n="products.viewDetails">Ver detalles</a>
+                    </div>
+                </div>
+
+                <!-- Producto 3: Chaqueta Bicolor -->
+                <div class="product-card" data-category="bicolor">
+                    <div class="product-badge" data-i18n="product.popular">Popular</div>
+                    <div class="product-image-container">
+                        <img src="assets/images/products/5.png" alt="Chaqueta Deportiva Bicolor Velocity" class="product-image" loading="lazy">
+                        <div class="product-actions">
+                            <button class="action-btn" data-i18n="[title]product.wishlist"><i class="fas fa-heart"></i></button>
+                            <button class="action-btn" data-i18n="[title]product.cart"><i class="fas fa-shopping-cart"></i></button>
+                            <button class="action-btn" data-i18n="[title]product.view"><i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title" data-i18n="product.velocity.name">Chaqueta Deportiva Bicolor Velocity</h3>
+                        <p class="product-category" data-i18n="categories.bicolor">Bicolor</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(18)</span>
+                        </div>
+                        <p class="product-price">
+                            <span data-i18n="product.price" data-i18n-options='{"price": "250.000"}'>COP 250.000</span>
+                        </p>
+                        <a href="pages/products/chaqueta-deportiva-bicolor-velocity.html" class="btn btn-primary" data-i18n="products.viewDetails">Ver detalles</a>
+                    </div>
+                </div>
+
+                <!-- Producto 4: Chaqueta de Cuero Clásica -->
+                <div class="product-card" data-category="cuero">
+                    <div class="product-badge" data-i18n="product.classic">Clásico</div>
+                    <div class="product-image-container">
+                        <img src="assets/images/products/3.png" alt="Chaqueta de Cuero Clásica" class="product-image" loading="lazy">
+                        <div class="product-actions">
+                            <button class="action-btn" data-i18n="[title]product.wishlist"><i class="fas fa-heart"></i></button>
+                            <button class="action-btn" data-i18n="[title]product.cart"><i class="fas fa-shopping-cart"></i></button>
+                            <button class="action-btn" data-i18n="[title]product.view"><i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title" data-i18n="product.leather.name">Chaqueta de Cuero Clásica</h3>
+                        <p class="product-category" data-i18n="categories.leather">Cuero</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(50)</span>
+                        </div>
+                        <p class="product-price">
+                            <span data-i18n="product.price" data-i18n-options='{"price": "450.000"}'>COP 450.000</span>
+                        </p>
+                        <a href="pages/products/chaqueta-cuero-clasica.html" class="btn btn-primary" data-i18n="products.viewDetails">Ver detalles</a>
+                    </div>
+                </div>
+
+                <!-- Producto 5: Chaqueta de Denim Oversized - Eliminado como solicitado -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner promocional -->
+    <section class="promo-banner">
+        <div class="container">
+            <div class="promo-content">
+                <h2 data-i18n="promo.title">Hasta 40% de descuento</h2>
+                <p data-i18n="promo.subtitle">En chaquetas de temporada pasada por tiempo limitado</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre nosotros -->
+    <section class="about-section" id="nosotros">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image fade-in">
+                    <img src="assets/images/products/logo.webp" alt="Sobre SportLoryu's" loading="lazy">
+                </div>
+                <div class="about-text fade-in">
+                    <h2 data-i18n="about.title">Sobre Nosotros</h2>
+                    <p data-i18n="about.description">En SportLoryu's, diseñamos chaquetas y prendas deportivas que fusionan innovación, calidad y estilo urbano. Nos comprometemos a ofrecer productos duraderos y funcionales, fabricados con materiales sostenibles, para acompañar a nuestros clientes en su vida activa.</p>
+                    
+                    <div class="values-section">
+                        <h3 data-i18n="about.values">Nuestros Valores</h3>
+                        <ul class="values-list">
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="about.values.quality">Calidad sobre cantidad: Prendas pensadas para durar</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="about.values.urban">Conexión urbana: Diseños que reflejan la energía de la ciudad</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="about.values.sustainability">Sostenibilidad: Uso progresivo de materiales reciclados</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-i18n="about.values.customer">Enfoque en el cliente: Atención personalizada y envíos</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestras ventajas -->
+    <section class="features" id="ventajas">
+        <div class="container">
+            <h2 class="section-title" data-i18n="features.main_title">Nuestras Ventajas</h2>
+            <div class="features-grid">
+                <!-- Característica 1 -->
+                <div class="feature-card" id="feature-shipping">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title" data-i18n="feature.shipping.title">Envío Gratis</h3>
+                        <p data-i18n="feature.shipping.desc">En compras mayores a $100 enviamos gratis a todo el país.</p>
+                    </div>
+                </div>
+
+                <!-- Característica 2 -->
+                <div class="feature-card" id="feature-warranty">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title" data-i18n="feature.warranty.title">Garantía de 2 Años</h3>
+                        <p data-i18n="feature.warranty.desc">Todas nuestras chaquetas incluyen garantía extendida contra defectos.</p>
+                    </div>
+                </div>
+
+                <!-- Característica 3 -->
+                <div class="feature-card" id="feature-payment">
+                    <div class="feature-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title" data-i18n="feature.payment.title">Pago Seguro</h3>
+                        <p data-i18n="feature.payment.desc">Múltiples métodos de pago con la mayor seguridad.</p>
+                    </div>
+                </div>
+
+                <!-- Característica 4 -->
+                <div class="feature-card" id="feature-support">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title" data-i18n="feature.support.title">Soporte 24/7</h3>
+                        <p data-i18n="feature.support.desc">Nuestro equipo está siempre disponible para ayudarte.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guía de tallas -->
+    <section class="size-guide-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="size-guide.title">Guía de Tallas</h2>
+            <div class="size-guide-content">
+                <div class="size-guide-text">
+                    <p data-i18n="size-guide.description">En SportLoryu's nos preocupamos por ofrecerte el ajuste perfecto. Nuestras chaquetas están diseñadas siguiendo estándares internacionales para garantizar la máxima comodidad y estilo. Te recomendamos consultar nuestra tabla de tallas antes de realizar tu compra:</p>
+                    <ul class="size-guide-tips">
+                        <li><strong data-i18n="size-guide.xs">Talla XS: Ideal para contorno de pecho 86-91 cm</strong></li>
+                        <li><strong data-i18n="size-guide.s">Talla S: Ideal para contorno de pecho 91-96 cm</strong></li>
+                        <li><strong data-i18n="size-guide.m">Talla M: Ideal para contorno de pecho 96-101 cm</strong></li>
+                        <li><strong data-i18n="size-guide.l">Talla L: Ideal para contorno de pecho 101-106 cm</strong></li>
+                        <li><strong data-i18n="size-guide.xl">Talla XL: Ideal para contorno de pecho 106-111 cm</strong></li>
+                    </ul>
+                    <p data-i18n="size-guide.tips.title">Consejos para elegir tu talla:</p>
+                    <ul class="size-guide-tips">
+                        <li data-i18n="size-guide.tips.1">Mide tu contorno de pecho a la altura de las axilas</li>
+                        <li data-i18n="size-guide.tips.2">Si estás entre dos tallas, te recomendamos elegir la talla superior para un ajuste más holgado</li>
+                        <li data-i18n="size-guide.tips.3">Nuestras chaquetas están diseñadas para permitir el uso de capas debajo</li>
+                        <li data-i18n="size-guide.tips.4">Si tienes dudas, nuestro equipo de atención al cliente está disponible para ayudarte</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title" data-i18n="testimonials.title">Lo que Dicen Nuestros Clientes</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text" data-i18n="testimonial.1.text">"Como motociclista, necesitaba una chaqueta resistente pero con estilo urbano. La chaqueta de cuero con protecciones discretas de SportLoryu's es exactamente lo que buscaba. Excelente calidad y muy buena relación calidad-precio."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-info">
+                            <h4 data-i18n="testimonial.1.name">Roberto Gómez</h4>
+                            <span data-i18n="testimonial.1.role">Cliente desde 2021</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text" data-i18n="testimonial.2.text">"La chaqueta impermeable AquaGuard ha sido mi salvación durante la temporada de lluvias. Es ligera, cómoda y realmente impermeable. Me encanta que puedo usarla tanto para ir al trabajo como para mis caminatas matutinas."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-info">
+                            <h4 data-i18n="testimonial.2.name">María González</h4>
+                            <span data-i18n="testimonial.2.role">Cliente desde 2023</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text" data-i18n="testimonial.3.text">"La chaqueta deportiva FlexFit es perfecta para mis entrenamientos. El material transpirable y elástico me da total libertad de movimiento. Los detalles reflectantes son un plus para mis carreras al amanecer."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-info">
+                            <h4 data-i18n="testimonial.3.name">Diego Morales</h4>
+                            <span data-i18n="testimonial.3.role">Cliente desde 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text" data-i18n="testimonial.4.text">"La chaqueta bicolor Velocity es mi favorita para el día a día. El diseño es moderno y los colores son vibrantes. Me encanta que puedo combinarla con todo y es perfecta para un look casual pero elegante."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-info">
+                            <h4 data-i18n="testimonial.4.name">Daniela Ospina</h4>
+                            <span data-i18n="testimonial.4.role">Cliente desde 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2 data-i18n="newsletter.title">Suscríbete a Nuestro Boletín</h2>
+                <p data-i18n="newsletter.subtitle">Recibe ofertas exclusivas y actualizaciones</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="" required data-i18n-placeholder="newsletter.placeholder">
+                    <button type="submit" class="btn" data-i18n="newsletter.button">Suscribirse</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Información de la empresa -->
+                <div class="footer-section">
+                    <h3 data-i18n="footer.about.title">SportLoryu's</h3>
+                    <p data-i18n="footer.about.description">Tu marca de moda deportiva urbana. Diseñamos chaquetas y prendas que fusionan innovación, calidad y estilo urbano con materiales sostenibles.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/share/1YxdEDLpvD/" class="social-icon" target="_blank" rel="noopener noreferrer" data-i18n="[title]footer.social.facebook"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+
+                <!-- Enlaces útiles -->
+                <div class="footer-section">
+                    <h3 data-i18n="footer.links.title">Enlaces Útiles</h3>
+                    <ul>
+                        <li><a href="#" data-i18n="footer.links.about">Sobre Nosotros</a></li>
+                        <li><a href="#" data-i18n="footer.links.terms">Términos y Condiciones</a></li>
+                        <li><a href="#" data-i18n="footer.links.privacy">Política de Privacidad</a></li>
+                        <li><a href="#" data-i18n="footer.links.returns">Política de Devoluciones</a></li>
+                        <li><a href="#" data-i18n="footer.links.faq">Preguntas Frecuentes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Categorías -->
+                <div class="footer-section">
+                    <h3 data-i18n="footer.categories.title">Categorías</h3>
+                    <ul>
+                        <li><a href="#" data-i18n="categories.leather">Cuero</a></li>
+                        <li><a href="#" data-i18n="categories.denim">Denim</a></li>
+                        <li><a href="#" data-i18n="categories.bomber">Bomber</a></li>
+                        <li><a href="#" data-i18n="categories.parka">Parka</a></li>
+                        <li><a href="#" data-i18n="categories.waterproof">Impermeable</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contacto -->
+                <div class="footer-section">
+                    <h3 data-i18n="footer.contact.title">Contacto</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> <span data-i18n="footer.contact.address">Calle Principal #123, Bogotá, Colombia</span></li>
+                        <li><i class="fas fa-phone"></i> <span data-i18n="footer.contact.phone">+57 123 456 7890</span></li>
+                        <li><i class="fas fa-envelope"></i> <span data-i18n="footer.contact.email">info@sportloryus.com</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">© 2024 SportLoryu's. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/language-selector.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
